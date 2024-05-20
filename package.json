@@ -1,0 +1,17 @@
+{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js project for Jenkins CI/CD testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^8.4.0",
+    "chai": "^4.3.4"
+  },
+  "author": "dong5053",
+  "license": "ISC"
+}
+
