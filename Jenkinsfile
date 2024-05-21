@@ -4,7 +4,7 @@ pipeline {
     tools {
        nodejs 'nodejs-21.6.2'
     }
-    
+
     environment {
         DOCKER_TOOL_NAME = 'docker-26.0.0'
         DOCKER_IMAGE = 'danma5053/testweb'
@@ -43,13 +43,11 @@ pipeline {
                 }
             }
         }
-        stage('deploy') { 
-            steps { 
-                script { 
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
                     withKubeConfig([credentialsId: 'k8s-jenkins-token', serverUrl: 'https://10.0.0.3', namespace: 'default']) {
-                        container('kubectl') {
-                            sh 'kubectl apply -f deploy.yaml'
-                        }
+                        sh 'kubectl apply -f deploy.yaml'
                     }
                 }
             }
