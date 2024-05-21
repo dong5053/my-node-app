@@ -43,5 +43,16 @@ pipeline {
                 }
             }
         }
+        stage('deploy') { 
+            steps { 
+                script { 
+                    withKubeConfig([credentialsId: 'kube-config', serverUrl: 'https://10.0.0.3', namespace: 'default']) {
+                        container('kubectl') {
+                            sh 'kubectl apply -f deploy.yaml'
+                        }
+                    }
+                }
+            }
+        }
     }
 }
