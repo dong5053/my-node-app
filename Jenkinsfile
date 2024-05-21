@@ -18,6 +18,7 @@ pipeline {
             steps {
                 script {
                     echo 'Testing...'
+                    echo '하하하하핳'
                     sh 'npm test'
                 }
             }
