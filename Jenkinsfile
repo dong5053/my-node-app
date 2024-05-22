@@ -38,10 +38,10 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'gcp-jenkins-gar-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-                        sh '''#!/bin/bash
+                        sh '''
                         gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                         gcloud auth configure-docker asia-northeast3-docker.pkg.dev --quiet
-                        docker push ${DOCKER_IMAGE}:${env.BUILD_ID}
+                        docker push ${DOCKER_IMAGE}:${BUILD_ID}
                         '''
                     }
                 }
